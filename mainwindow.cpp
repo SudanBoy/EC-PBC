@@ -6,6 +6,13 @@ MainWindow::MainWindow(QWidget *parent) :
     ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
+    connect(ui->exitBtn,SIGNAL(clicked()),this,SLOT(close()));
+}
+
+
+void MainWindow::close(){
+    QCoreApplication::quit();
 }
 
 MainWindow::~MainWindow()
