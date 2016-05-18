@@ -18,8 +18,14 @@ public:
 private:
     Ui::MainWindow *ui;
 
-public slots:
+
+private slots:
     void close();
+    void persoanlCal();
+    void othDirectCal();
+    void inDirectCal();
+    void SubcontractingCal();
+    void totalFundCal();
 
 
 };
