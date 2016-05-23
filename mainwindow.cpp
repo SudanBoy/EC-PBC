@@ -7,6 +7,8 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
+    setWindowTitle("European Commission Project Budget Calculator");
+    //setFixedSize(size());
     connect(ui->exitBtn,SIGNAL(clicked()),this,SLOT(close()));
 
     connect(ui->costPm_value,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
@@ -135,7 +137,9 @@ void MainWindow::totalFundCal(){
 
     int Fund = total_personal + total_subContract + total_otherDirect + total_indirect;
 
+    ui->fund_lcdn->display(Fund);
     ui->fund_value->setText(QString::number(Fund));
+
 
 }
 
