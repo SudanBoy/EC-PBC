@@ -26,6 +26,7 @@ private slots:
     void inDirectCal();
     void SubcontractingCal();
     void totalFundCal();
+    void clearAllFields();
 
 
 };

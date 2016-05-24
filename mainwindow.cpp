@@ -8,13 +8,15 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->setupUi(this);
 
     setWindowTitle("European Commission Project Budget Calculator");
-    //setFixedSize(size());
+
     connect(ui->exitBtn,SIGNAL(clicked()),this,SLOT(close()));
+    connect(ui->clearAll,SIGNAL(clicked()),this,SLOT(clearAllFields()));
 
     connect(ui->costPm_value,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
     connect(ui->rtd_value,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
     connect(ui->dem_value,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
     connect(ui->mgt_value,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
+
     connect(ui->persoanl_oth,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
 
     connect(ui->subCon_dem,SIGNAL(textEdited(QString)),this,SLOT(SubcontractingCal()));
@@ -22,16 +24,21 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->subCon_mgt,SIGNAL(textEdited(QString)),this,SLOT(SubcontractingCal()));
     connect(ui->subCon_oth,SIGNAL(textEdited(QString)),this,SLOT(SubcontractingCal()));
 
-    connect(ui->indirectCost_oth,SIGNAL(textEdited(QString)),this,SLOT(inDirectCal()));
-
     connect(ui->travel,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
     connect(ui->equip,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
-    connect(ui->othDirectCost_rtd,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
+
+    connect(ui->othDirectCost_dem,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
     connect(ui->othDirectCost_oth,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
 
+    connect(ui->othDirectCost_rtd,SIGNAL(textChanged(QString)),this,SLOT(inDirectCal()));
+    connect(ui->othDirectCost_dem,SIGNAL(textEdited(QString)),this,SLOT(inDirectCal()));
+    connect(ui->othDirectCost_mgt,SIGNAL(textChanged(QString)),this,SLOT(inDirectCal()));
+    connect(ui->indirectCost_oth,SIGNAL(textEdited(QString)),this,SLOT(inDirectCal()));
 
-    SubcontractingCal();
-
+    connect(ui->persoanl_total,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
+    connect(ui->subCon_total,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
+    connect(ui->othDirectCost_total,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
+    connect(ui->indirectCost_total,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
 }
 
 
@@ -74,8 +81,6 @@ void MainWindow::SubcontractingCal(){
     int total_subCon = subCon_dem + subCon_rtd + subCon_mgt + subCon_oth;
 
     ui->subCon_total->setText(QString::number(total_subCon));
-
-
 }
 
 void MainWindow::othDirectCal(){
@@ -93,9 +98,6 @@ void MainWindow::othDirectCal(){
     int othDirectCost_total = othDirectCost_rtd + othDirectCost_dem + othDirectCost_mgt + othDirectCost_oth;
 
     ui->othDirectCost_total->setText(QString::number(othDirectCost_total));
-
-    inDirectCal();
-
 }
 
 void MainWindow::inDirectCal(){
@@ -125,8 +127,6 @@ void MainWindow::inDirectCal(){
     int total_indirect = indirectCost_dem + indirectCost_rtd + indirectCost_mgt + indirect_oth;
 
     ui->indirectCost_total->setText(QString::number(total_indirect));
-
-    totalFundCal();
 }
 
 void MainWindow::totalFundCal(){
@@ -139,8 +139,47 @@ void MainWindow::totalFundCal(){
 
     ui->fund_lcdn->display(Fund);
     ui->fund_value->setText(QString::number(Fund));
+}
 
+void MainWindow::clearAllFields(){
+    ui->rtd_value->clear();
+    ui->dem_value->clear();
+    ui->mgt_value->clear();
+    ui->totalPm_value->clear();
+    ui->costPm_value->clear();
 
+    ui->persoanl_rtd->clear();
+    ui->persoanl_dem->clear();
+    ui->personal_mgt->clear();
+    ui->persoanl_oth->clear();
+    ui->persoanl_total->clear();
+
+    ui->subCon_rtd->clear();
+    ui->subCon_dem->clear();
+    ui->subCon_mgt->clear();
+    ui->subCon_oth->clear();
+    ui->subCon_total->clear();
+
+    ui->travel->clear();
+    ui->equip->clear();
+    ui->othDirectCost_rtd->clear();
+    ui->othDirectCost_dem->clear();
+    ui->othDirectCost_mgt->clear();
+    ui->othDirectCost_oth->clear();
+    ui->othDirectCost_total->clear();
+
+    ui->indirectCost_rtd->clear();
+    ui->indirectCost_dem->clear();
+    ui->indirectCost_mgt->clear();
+    ui->indirectCost_oth->clear();
+    ui->indirectCost_total->clear();
+
+    ui->rtd_total->clear();
+    ui->dem_total->clear();
+    ui->mgt_total->clear();
+    ui->oth_total->clear();
+
+    ui->fund_value->clear();
 }
 
 MainWindow::~MainWindow()
