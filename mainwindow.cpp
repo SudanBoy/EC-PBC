@@ -1,5 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include <QDebug>
+#include <QWhatsThis>
+
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -7,9 +10,13 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    setWindowTitle("European Commission Project Budget Calculator");
+    setWindowTitle("European Commission - Project Budget Calculator");
+    setGuiStyle();
+    setToolTip();
 
-    connect(ui->exitBtn,SIGNAL(clicked()),this,SLOT(close()));
+    set_indirect_perc();
+    get_indirect_perc();
+
     connect(ui->clearAll,SIGNAL(clicked()),this,SLOT(clearAllFields()));
 
     connect(ui->costPm_value,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
@@ -39,11 +46,6 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->subCon_total,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
     connect(ui->othDirectCost_total,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
     connect(ui->indirectCost_total,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
-}
-
-
-void MainWindow::close(){
-    QCoreApplication::quit();
 }
 
 void MainWindow::persoanlCal(){
@@ -138,7 +140,6 @@ void MainWindow::totalFundCal(){
     int Fund = total_personal + total_subContract + total_otherDirect + total_indirect;
 
     ui->fund_lcdn->display(Fund);
-    ui->fund_value->setText(QString::number(Fund));
 }
 
 void MainWindow::clearAllFields(){
@@ -178,11 +179,39 @@ void MainWindow::clearAllFields(){
     ui->dem_total->clear();
     ui->mgt_total->clear();
     ui->oth_total->clear();
+}
 
-    ui->fund_value->clear();
+void MainWindow::set_indirect_perc(){
+    ui->indirect_value->setText("0.25");
+    indirect_per = ui->indirect_value->text().toFloat();
+}
+
+int MainWindow::get_indirect_perc(){
+    return indirect_per;
+}
+
+void MainWindow::setToolTip(){
+    ui->rtdLbl_2->setToolTip(tr("Research and technological development"));
+    ui->demLbl_2->setToolTip(tr("Demonstration"));
+    ui->mgtLbl_2->setToolTip(tr("Management of the consortium"));
+    ui->othLbl->setToolTip(tr("Other specific activities"));
+}
+
+void MainWindow::set_validators(){}
+
+void MainWindow::setGuiStyle(){
+    setAutoFillBackground(true);
+    //ui->calLayout->setStyleSheet("QLabel { background-color :white ; color : #c0392b}");
+    this->setStyleSheet("background-color :white");
+    //ui->calLayout->setStyleSheet("background-color :black ; color : white");
+    //ui->lcdLayout->setStyleSheet("background-color :black ; color : white");
+    ui->groupBox_2->setStyleSheet("background-color :black ; color : white");
+    ui->groupBox->setStyleSheet("background-color :black ; color : white");
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+

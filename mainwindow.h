@@ -17,16 +17,20 @@ public:
 
 private:
     Ui::MainWindow *ui;
-
+    int indirect_per;
+    void set_indirect_perc();
+    int get_indirect_perc();
+    void set_validators();
+    void setGuiStyle();
 
 private slots:
-    void close();
     void persoanlCal();
     void othDirectCal();
     void inDirectCal();
     void SubcontractingCal();
     void totalFundCal();
     void clearAllFields();
+    void setToolTip();
 
 
 };
