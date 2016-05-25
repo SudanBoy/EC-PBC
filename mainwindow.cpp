@@ -64,11 +64,11 @@ void MainWindow::persoanlCal(){
 
     double tot_persoanl = personal_rtd + personal_dem + personal_mgt + personal_oth;
 
-    ui->persoanl_rtd->setText(QString::number(personal_rtd));
-    ui->persoanl_dem->setText(QString::number(personal_dem));
-    ui->personal_mgt->setText(QString::number(personal_mgt));
+    ui->persoanl_rtd->setText(formatNumber(personal_rtd));
+    ui->persoanl_dem->setText(formatNumber(personal_dem));
+    ui->personal_mgt->setText(formatNumber(personal_mgt));
 
-    ui->tot_persoanl->setText(QString::number(tot_persoanl));
+    ui->tot_persoanl->setText(formatNumber(tot_persoanl));
 
     ui->tot_pm->setText(QString::number(tot_pm));
     totalCategory();
@@ -83,7 +83,7 @@ void MainWindow::SubcontractingCal(){
 
     double tot_sub_con = sub_con_dem + sub_con_rtd + sub_con_mgt + sub_con_oth;
 
-    ui->tot_sub_con->setText(QString::number(tot_sub_con));
+    ui->tot_sub_con->setText(formatNumber(tot_sub_con));
     totalCategory();
 }
 
@@ -96,12 +96,12 @@ void MainWindow::othDirectCal(){
     double oth_direct_mgt = travel_cost;
     double oth_direct_oth = ui->oth_direct_oth->text().toDouble();
 
-    ui->oth_direct_rtd->setText(QString::number(oth_direct_rtd));
-    ui->oth_direct_mgt->setText(QString::number(oth_direct_mgt));
+    ui->oth_direct_rtd->setText(formatNumber(oth_direct_rtd));
+    ui->oth_direct_mgt->setText(formatNumber(oth_direct_mgt));
 
     double tot_oth_direct = oth_direct_rtd + oth_direct_dem + oth_direct_mgt + oth_direct_oth;
 
-    ui->tot_oth_direct->setText(QString::number(tot_oth_direct));
+    ui->tot_oth_direct->setText(formatNumber(tot_oth_direct));
     totalCategory();
 }
 
@@ -120,25 +120,25 @@ void MainWindow::indirectCal(){
     double personal_rtd = pm_cost*rtd_pm;
     double oth_direct_rtd = ui->oth_direct_rtd->text().toDouble();
     double indirect_rtd = (oth_direct_rtd + personal_rtd) * indirect_perc;
-    ui->indirect_rtd->setText(QString::number(indirect_rtd));
+    ui->indirect_rtd->setText(formatNumber(indirect_rtd));
 
     int dem_pm = ui->dem_pm->text().toInt();
     double personal_dem = pm_cost*dem_pm;
     double oth_direct_dem = ui->oth_direct_dem->text().toDouble();
     double indirect_dem = (oth_direct_dem + personal_dem) * indirect_perc;
-    ui->indirect_dem->setText(QString::number(indirect_dem));
+    ui->indirect_dem->setText(formatNumber(indirect_dem));
 
     int mgt_pm = ui->mgt_pm->text().toInt();
     double personal_mgt = pm_cost*mgt_pm;
     double oth_direct_mgt = ui->oth_direct_mgt->text().toDouble();
     double indirect_mgt = (oth_direct_mgt + personal_mgt) * indirect_perc;
-    ui->indirect_mgt->setText(QString::number(indirect_mgt));
+    ui->indirect_mgt->setText(formatNumber(indirect_mgt));
 
     double indirect_oth = ui->indirect_oth->text().toDouble();
 
     double tot_indirect = indirect_dem + indirect_rtd + indirect_mgt + indirect_oth;
 
-    ui->tot_indirect->setText(QString::number(tot_indirect));
+    ui->tot_indirect->setText(formatNumber(tot_indirect));
 
     totalCategory();
 }
@@ -150,28 +150,28 @@ void MainWindow::totalCategory(){
     double oth_direct_rtd = ui->oth_direct_rtd->text().toDouble();
     double indirect_rtd = ui->indirect_rtd->text().toDouble();
     double tot_rtd = personal_rtd + sub_con_rtd + oth_direct_rtd + indirect_rtd;
-    ui->tot_rtd->setText(QString::number(tot_rtd));
+    ui->tot_rtd->setText(formatNumber(tot_rtd));
 
     double personal_dem = ui->persoanl_dem->text().toDouble();
     double sub_con_dem = ui->sub_con_dem->text().toDouble();
     double oth_direct_dem = ui->oth_direct_dem->text().toDouble();
     double indirect_dem= ui->indirect_dem->text().toDouble();
     double tot_dem = personal_dem + sub_con_dem + oth_direct_dem + indirect_dem;
-    ui->tot_dem->setText(QString::number(tot_dem));
+    ui->tot_dem->setText(formatNumber(tot_dem));
 
     double personal_mgt = ui->personal_mgt->text().toDouble();
     double sub_con_mgt = ui->sub_con_mgt->text().toDouble();
     double oth_direct_mgt = ui->oth_direct_mgt->text().toDouble();
     double indirect_mgt = ui->indirect_mgt->text().toDouble();
     double tot_mgt = personal_mgt + sub_con_mgt + oth_direct_mgt + indirect_mgt;
-    ui->tot_mgt->setText(QString::number(tot_mgt));
+    ui->tot_mgt->setText(formatNumber(tot_mgt));
 
     double personal_oth = ui->persoanl_oth->text().toDouble();
     double sub_con_oth = ui->sub_con_oth->text().toDouble();
     double oth_direct_oth = ui->oth_direct_oth->text().toDouble();
     double indirect_oth = ui->indirect_oth->text().toDouble();
     double tot_oth = personal_oth + sub_con_oth + oth_direct_oth + indirect_oth;
-    ui->tot_oth->setText(QString::number(tot_oth));
+    ui->tot_oth->setText(formatNumber(tot_oth));
 
 }
 
@@ -279,10 +279,16 @@ void MainWindow::set_validators(){
     ui->tot_oth->setValidator(double_no);
 }
 
+QString MainWindow::formatNumber(double number){
+    QLocale::setDefault(QLocale(QLocale::English, QLocale::UnitedStates));
+    QLocale aEnglish;
+    return aEnglish.toString(number);
+}
+
 void MainWindow::setGuiStyle(){
     this->setStyleSheet("background-color :white");
-    ui->basicsLyt->setStyleSheet("background-color :black ; color : white");
-    ui->resultLyt->setStyleSheet("background-color :black ; color : white");
+    //ui->basicsLyt->setStyleSheet("background-color :black ; color : white");
+    //ui->resultLyt->setStyleSheet("background-color :black ; color : white");
 }
 
 MainWindow::~MainWindow()

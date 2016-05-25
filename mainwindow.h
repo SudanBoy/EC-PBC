@@ -21,6 +21,7 @@ private:
     void set_indirect_perc();
     void set_validators();
     void setGuiStyle();
+    QString formatNumber(double number);
 
 private slots:
     void persoanlCal();
