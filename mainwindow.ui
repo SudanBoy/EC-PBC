@@ -183,7 +183,7 @@
           </size>
          </property>
          <property name="text">
-          <string>Fund Reguested</string>
+          <string>Total Fund </string>
          </property>
         </widget>
        </item>
@@ -870,7 +870,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLineEdit" name="tot_travel_cost">
+         <widget class="QLineEdit" name="travel_cost">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -950,7 +950,7 @@
            <enum>QFrame::NoFrame</enum>
           </property>
           <property name="text">
-           <string>Associated Cost</string>
+           <string>Total Cost for:</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -958,7 +958,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="QLineEdit" name="tot_equip_cost">
+         <widget class="QLineEdit" name="equip_cost">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1004,7 +1004,7 @@
         <item row="2" column="1">
          <widget class="QLineEdit" name="indirect_perc">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1031,10 +1031,10 @@
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="readOnly">
-           <bool>true</bool>
+           <bool>false</bool>
           </property>
           <property name="placeholderText">
-           <string>0.25</string>
+           <string/>
           </property>
          </widget>
         </item>
@@ -1239,7 +1239,7 @@
         <item row="17" column="4">
          <widget class="QLineEdit" name="indirect_oth">
           <property name="enabled">
-           <bool>false</bool>
+           <bool>true</bool>
           </property>
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -1514,20 +1514,20 @@
   <tabstop>dem_pm</tabstop>
   <tabstop>mgt_pm</tabstop>
   <tabstop>pm_cost</tabstop>
-  <tabstop>tot_travel_cost</tabstop>
-  <tabstop>tot_equip_cost</tabstop>
+  <tabstop>travel_cost</tabstop>
+  <tabstop>equip_cost</tabstop>
+  <tabstop>indirect_perc</tabstop>
   <tabstop>persoanl_oth</tabstop>
   <tabstop>sub_con_rtd</tabstop>
   <tabstop>sub_con_dem</tabstop>
   <tabstop>sub_con_mgt</tabstop>
   <tabstop>sub_con_oth</tabstop>
-  <tabstop>oth_direct_oth</tabstop>
-  <tabstop>clearAllBtn</tabstop>
-  <tabstop>indirect_mgt</tabstop>
-  <tabstop>tot_pm</tabstop>
-  <tabstop>tot_oth_direct</tabstop>
-  <tabstop>tot_sub_con</tabstop>
   <tabstop>oth_direct_dem</tabstop>
+  <tabstop>oth_direct_oth</tabstop>
+  <tabstop>indirect_oth</tabstop>
+  <tabstop>clearAllBtn</tabstop>
+  <tabstop>tot_sub_con</tabstop>
+  <tabstop>tot_oth_direct</tabstop>
   <tabstop>tot_persoanl</tabstop>
   <tabstop>personal_mgt</tabstop>
   <tabstop>tot_indirect</tabstop>
@@ -1540,8 +1540,8 @@
   <tabstop>tot_rtd</tabstop>
   <tabstop>indirect_dem</tabstop>
   <tabstop>tot_oth</tabstop>
-  <tabstop>indirect_oth</tabstop>
-  <tabstop>indirect_perc</tabstop>
+  <tabstop>tot_pm</tabstop>
+  <tabstop>indirect_mgt</tabstop>
   <tabstop>tot_mgt</tabstop>
   <tabstop>CalculatorLyt</tabstop>
  </tabstops>
