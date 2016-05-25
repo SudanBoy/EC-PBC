@@ -10,180 +10,185 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    setWindowTitle("European Commission - Project Budget Calculator");
+    setWindowTitle("European Commission - Fund Calculator");
+
     setGuiStyle();
     setToolTip();
+    set_validators();
 
     set_indirect_perc();
     get_indirect_perc();
 
-    connect(ui->clearAll,SIGNAL(clicked()),this,SLOT(clearAllFields()));
+    connect(ui->clearAllBtn,SIGNAL(clicked()),this,SLOT(clearAllFields()));
 
-    connect(ui->costPm_value,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
-    connect(ui->rtd_value,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
-    connect(ui->dem_value,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
-    connect(ui->mgt_value,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
+    connect(ui->rtd_pm,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
+    connect(ui->dem_pm,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
+    connect(ui->mgt_pm,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
+    connect(ui->pm_cost,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
 
     connect(ui->persoanl_oth,SIGNAL(textEdited(QString)),this,SLOT(persoanlCal()));
 
-    connect(ui->subCon_dem,SIGNAL(textEdited(QString)),this,SLOT(SubcontractingCal()));
-    connect(ui->subCon_rtd,SIGNAL(textEdited(QString)),this,SLOT(SubcontractingCal()));
-    connect(ui->subCon_mgt,SIGNAL(textEdited(QString)),this,SLOT(SubcontractingCal()));
-    connect(ui->subCon_oth,SIGNAL(textEdited(QString)),this,SLOT(SubcontractingCal()));
+    connect(ui->sub_con_dem,SIGNAL(textEdited(QString)),this,SLOT(SubcontractingCal()));
+    connect(ui->sub_con_rtd,SIGNAL(textEdited(QString)),this,SLOT(SubcontractingCal()));
+    connect(ui->sub_con_mgt,SIGNAL(textEdited(QString)),this,SLOT(SubcontractingCal()));
+    connect(ui->sub_con_oth,SIGNAL(textEdited(QString)),this,SLOT(SubcontractingCal()));
 
-    connect(ui->travel,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
-    connect(ui->equip,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
+    connect(ui->tot_travel_cost,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
+    connect(ui->tot_equip_cost,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
 
-    connect(ui->othDirectCost_dem,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
-    connect(ui->othDirectCost_oth,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
+    connect(ui->oth_direct_dem,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
+    connect(ui->oth_direct_oth,SIGNAL(textEdited(QString)),this,SLOT(othDirectCal()));
 
-    connect(ui->othDirectCost_rtd,SIGNAL(textChanged(QString)),this,SLOT(inDirectCal()));
-    connect(ui->othDirectCost_dem,SIGNAL(textEdited(QString)),this,SLOT(inDirectCal()));
-    connect(ui->othDirectCost_mgt,SIGNAL(textChanged(QString)),this,SLOT(inDirectCal()));
-    connect(ui->indirectCost_oth,SIGNAL(textEdited(QString)),this,SLOT(inDirectCal()));
+    connect(ui->oth_direct_rtd,SIGNAL(textChanged(QString)),this,SLOT(inDirectCal()));
+    connect(ui->oth_direct_dem,SIGNAL(textEdited(QString)),this,SLOT(inDirectCal()));
+    connect(ui->oth_direct_mgt,SIGNAL(textChanged(QString)),this,SLOT(inDirectCal()));
+    connect(ui->indirect_oth,SIGNAL(textEdited(QString)),this,SLOT(inDirectCal()));
 
-    connect(ui->persoanl_total,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
-    connect(ui->subCon_total,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
-    connect(ui->othDirectCost_total,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
-    connect(ui->indirectCost_total,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
+    connect(ui->tot_persoanl,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
+    connect(ui->tot_sub_con,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
+    connect(ui->tot_oth_direct,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
+    connect(ui->tot_indirect,SIGNAL(textChanged(QString)),this,SLOT(totalFundCal()));
 }
 
 void MainWindow::persoanlCal(){
-    int costPm_value = ui->costPm_value->text().toInt();
+    int pm_cost = ui->pm_cost->text().toInt();
 
-    int dem_value = ui->dem_value->text().toInt();
-    int personal_dem = costPm_value*dem_value;
+    int dem_pm = ui->dem_pm->text().toInt();
+    int personal_dem = pm_cost*dem_pm;
 
-    int rtd_value = ui->rtd_value->text().toInt();
-    int personal_rtd = costPm_value*rtd_value;
+    int rtd_pm = ui->rtd_pm->text().toInt();
+    int personal_rtd = pm_cost*rtd_pm;
 
-    int mgt_value = ui->mgt_value->text().toInt();
-    int personal_mgt = costPm_value*mgt_value;
+    int mgt_pm = ui->mgt_pm->text().toInt();
+    int personal_mgt = pm_cost*mgt_pm;
 
     int personal_oth = ui->persoanl_oth->text().toInt();
 
-    int totalMP = rtd_value + dem_value + mgt_value;
-    int persoanl_total = personal_rtd + personal_dem + personal_mgt + personal_oth;
+    int tot_pm = rtd_pm + dem_pm + mgt_pm;
+    int tot_persoanl = personal_rtd + personal_dem + personal_mgt + personal_oth;
 
     ui->persoanl_rtd->setText(QString::number(personal_rtd));
     ui->persoanl_dem->setText(QString::number(personal_dem));
     ui->personal_mgt->setText(QString::number(personal_mgt));
-    ui->persoanl_total->setText(QString::number(persoanl_total));
+    ui->tot_persoanl->setText(QString::number(tot_persoanl));
 
-    ui->totalPm_value->setText(QString::number(totalMP));
+    ui->tot_pm->setText(QString::number(tot_pm));
 }
 
 void MainWindow::SubcontractingCal(){
 
-    int subCon_dem = ui->subCon_dem->text().toInt();
-    int subCon_rtd = ui->subCon_rtd->text().toInt();
-    int subCon_mgt = ui->subCon_mgt->text().toInt();
-    int subCon_oth = ui->subCon_oth->text().toInt();
+    int sub_con_dem = ui->sub_con_dem->text().toInt();
+    int sub_con_rtd = ui->sub_con_rtd->text().toInt();
+    int sub_con_mgt = ui->sub_con_mgt->text().toInt();
+    int sub_con_oth = ui->sub_con_oth->text().toInt();
 
-    int total_subCon = subCon_dem + subCon_rtd + subCon_mgt + subCon_oth;
+    int tot_sub_con = sub_con_dem + sub_con_rtd + sub_con_mgt + sub_con_oth;
 
-    ui->subCon_total->setText(QString::number(total_subCon));
+    ui->tot_sub_con->setText(QString::number(tot_sub_con));
 }
 
 void MainWindow::othDirectCal(){
-    int travel = ui->travel->text().toInt();
-    int equip = ui->equip->text().toInt();
-    int othDirectCost_dem = ui->othDirectCost_dem->text().toInt();
-    int othDirectCost_mgt = travel;
-    int othDirectCost_oth = ui->othDirectCost_oth->text().toInt();
-    int othDirectCost_rtd = ui->othDirectCost_rtd->text().toInt();
+    int tot_travel_cost = ui->tot_travel_cost->text().toInt();
+    int tot_equip_cost = ui->tot_equip_cost->text().toInt();
 
-    othDirectCost_rtd = travel + equip;
-    ui->othDirectCost_rtd->setText(QString::number(othDirectCost_rtd));
-    ui->othDirectCost_mgt->setText(QString::number(othDirectCost_mgt));
+    int oth_direct_dem = ui->oth_direct_dem->text().toInt();
+    int oth_direct_mgt = tot_travel_cost;
+    int oth_direct_oth = ui->oth_direct_oth->text().toInt();
+    int oth_direct_rtd = ui->oth_direct_rtd->text().toInt();
 
-    int othDirectCost_total = othDirectCost_rtd + othDirectCost_dem + othDirectCost_mgt + othDirectCost_oth;
+    oth_direct_rtd = tot_travel_cost + tot_equip_cost;
 
-    ui->othDirectCost_total->setText(QString::number(othDirectCost_total));
+    ui->oth_direct_rtd->setText(QString::number(oth_direct_rtd));
+    ui->oth_direct_mgt->setText(QString::number(oth_direct_mgt));
+
+    int tot_oth_direct = oth_direct_rtd + oth_direct_dem + oth_direct_mgt + oth_direct_oth;
+
+    ui->tot_oth_direct->setText(QString::number(tot_oth_direct));
 }
 
 void MainWindow::inDirectCal(){
 
-    int costPm_value = ui->costPm_value->text().toInt();
+    int pm_cost = ui->pm_cost->text().toInt();
 
-    int dem_value = ui->dem_value->text().toInt();
-    int personal_dem = costPm_value*dem_value;
-    int othDirectCost_dem = ui->othDirectCost_dem->text().toInt();
-    int indirectCost_dem = (othDirectCost_dem + personal_dem) * 0.25;
-    ui->indirectCost_dem->setText(QString::number(indirectCost_dem));
+    int dem_pm = ui->dem_pm->text().toInt();
+    int personal_dem = pm_cost*dem_pm;
+    int oth_direct_dem = ui->oth_direct_dem->text().toInt();
+    int indirect_dem = (oth_direct_dem + personal_dem) * 0.25;
+    ui->indirect_dem->setText(QString::number(indirect_dem));
 
-    int rtd_value = ui->rtd_value->text().toInt();
-    int personal_rtd = costPm_value*rtd_value;
-    int othDirectCost_rtd = ui->othDirectCost_rtd->text().toInt();
-    int indirectCost_rtd = (othDirectCost_rtd + personal_rtd) * 0.25;
-    ui->indirectCost_rtd->setText(QString::number(indirectCost_rtd));
+    int rtd_pm = ui->rtd_pm->text().toInt();
+    int personal_rtd = pm_cost*rtd_pm;
+    int oth_direct_rtd = ui->oth_direct_rtd->text().toInt();
+    int indirect_rtd = (oth_direct_rtd + personal_rtd) * 0.25;
+    ui->indirect_rtd->setText(QString::number(indirect_rtd));
 
-    int mgt_value = ui->mgt_value->text().toInt();
-    int personal_mgt = costPm_value*mgt_value;
-    int othDirectCost_mgt = ui->othDirectCost_mgt->text().toInt();
-    int indirectCost_mgt = (othDirectCost_mgt + personal_mgt) * 0.25;
-    ui->indirectCost_mgt->setText(QString::number(indirectCost_mgt));
+    int mgt_pm = ui->mgt_pm->text().toInt();
+    int personal_mgt = pm_cost*mgt_pm;
+    int oth_direct_mgt = ui->oth_direct_mgt->text().toInt();
+    int indirect_mgt = (oth_direct_mgt + personal_mgt) * 0.25;
+    ui->indirect_mgt->setText(QString::number(indirect_mgt));
 
-    int indirect_oth = ui->indirectCost_oth->text().toInt();
+    int indirect_oth = ui->indirect_oth->text().toInt();
 
-    int total_indirect = indirectCost_dem + indirectCost_rtd + indirectCost_mgt + indirect_oth;
+    int tot_indirect = indirect_dem + indirect_rtd + indirect_mgt + indirect_oth;
 
-    ui->indirectCost_total->setText(QString::number(total_indirect));
+    ui->tot_indirect->setText(QString::number(tot_indirect));
 }
 
 void MainWindow::totalFundCal(){
-    int total_personal = ui->persoanl_total->text().toInt();
-    int total_subContract = ui->subCon_total->text().toInt();
-    int total_otherDirect = ui->othDirectCost_total->text().toInt();
-    int total_indirect = ui->indirectCost_total->text().toInt();
+    int tot_personal = ui->tot_persoanl->text().toInt();
+    int tot_sub_con = ui->tot_sub_con->text().toInt();
+    int tot_oth_direct = ui->tot_oth_direct->text().toInt();
+    int tot_indirect = ui->tot_indirect->text().toInt();
 
-    int Fund = total_personal + total_subContract + total_otherDirect + total_indirect;
+    int tot_fund = tot_personal + tot_sub_con + tot_oth_direct + tot_indirect;
 
-    ui->fund_lcdn->display(Fund);
+    ui->fund_lcd->display(tot_fund);
 }
 
 void MainWindow::clearAllFields(){
-    ui->rtd_value->clear();
-    ui->dem_value->clear();
-    ui->mgt_value->clear();
-    ui->totalPm_value->clear();
-    ui->costPm_value->clear();
+    ui->rtd_pm->clear();
+    ui->dem_pm->clear();
+    ui->mgt_pm->clear();
+    ui->tot_pm->clear();
+    ui->pm_cost->clear();
 
     ui->persoanl_rtd->clear();
     ui->persoanl_dem->clear();
     ui->personal_mgt->clear();
     ui->persoanl_oth->clear();
-    ui->persoanl_total->clear();
+    ui->tot_persoanl->clear();
 
-    ui->subCon_rtd->clear();
-    ui->subCon_dem->clear();
-    ui->subCon_mgt->clear();
-    ui->subCon_oth->clear();
-    ui->subCon_total->clear();
+    ui->sub_con_rtd->clear();
+    ui->sub_con_dem->clear();
+    ui->sub_con_mgt->clear();
+    ui->sub_con_oth->clear();
+    ui->tot_sub_con->clear();
 
-    ui->travel->clear();
-    ui->equip->clear();
-    ui->othDirectCost_rtd->clear();
-    ui->othDirectCost_dem->clear();
-    ui->othDirectCost_mgt->clear();
-    ui->othDirectCost_oth->clear();
-    ui->othDirectCost_total->clear();
+    ui->tot_travel_cost->clear();
+    ui->tot_equip_cost->clear();
 
-    ui->indirectCost_rtd->clear();
-    ui->indirectCost_dem->clear();
-    ui->indirectCost_mgt->clear();
-    ui->indirectCost_oth->clear();
-    ui->indirectCost_total->clear();
+    ui->oth_direct_rtd->clear();
+    ui->oth_direct_dem->clear();
+    ui->oth_direct_mgt->clear();
+    ui->oth_direct_oth->clear();
+    ui->tot_oth_direct->clear();
 
-    ui->rtd_total->clear();
-    ui->dem_total->clear();
-    ui->mgt_total->clear();
-    ui->oth_total->clear();
+    ui->indirect_rtd->clear();
+    ui->indirect_dem->clear();
+    ui->indirect_mgt->clear();
+    ui->indirect_oth->clear();
+    ui->tot_indirect->clear();
+
+    ui->tot_rtd->clear();
+    ui->tot_dem->clear();
+    ui->tot_mgt->clear();
+    ui->tot_oth->clear();
 }
 
 void MainWindow::set_indirect_perc(){
-    ui->indirect_value->setText("0.25");
-    indirect_per = ui->indirect_value->text().toFloat();
+    ui->indirect_perc->setText("0.25");
+    indirect_per = ui->indirect_perc->text().toFloat();
 }
 
 int MainWindow::get_indirect_perc(){
@@ -197,16 +202,17 @@ void MainWindow::setToolTip(){
     ui->othLbl->setToolTip(tr("Other specific activities"));
 }
 
-void MainWindow::set_validators(){}
+void MainWindow::set_validators(){
+    ui->rtd_pm->setValidator(new QIntValidator(0,100,this));
+    ui->dem_pm->setValidator(new QIntValidator(0,100,this));
+    ui->mgt_pm->setValidator(new QIntValidator(0,100,this));
+    ui->tot_pm->setValidator(new QIntValidator(0,100,this));
+}
 
 void MainWindow::setGuiStyle(){
-    setAutoFillBackground(true);
-    //ui->calLayout->setStyleSheet("QLabel { background-color :white ; color : #c0392b}");
     this->setStyleSheet("background-color :white");
-    //ui->calLayout->setStyleSheet("background-color :black ; color : white");
-    //ui->lcdLayout->setStyleSheet("background-color :black ; color : white");
-    ui->groupBox_2->setStyleSheet("background-color :black ; color : white");
-    ui->groupBox->setStyleSheet("background-color :black ; color : white");
+    ui->basicsLyt->setStyleSheet("background-color :black ; color : white");
+    ui->resultLyt->setStyleSheet("background-color :black ; color : white");
 }
 
 MainWindow::~MainWindow()

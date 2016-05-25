@@ -68,7 +68,7 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_3">
     <item row="3" column="0">
-     <widget class="QGroupBox" name="groupBox">
+     <widget class="QGroupBox" name="resultLyt">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
         <horstretch>0</horstretch>
@@ -91,7 +91,7 @@
       </property>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="1" column="2">
-        <widget class="QPushButton" name="clearAll">
+        <widget class="QPushButton" name="clearAllBtn">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -125,7 +125,7 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLCDNumber" name="fund_lcdn">
+        <widget class="QLCDNumber" name="fund_lcd">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -175,7 +175,7 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QLabel" name="label_2">
+        <widget class="QLabel" name="fundReqLbl">
          <property name="maximumSize">
           <size>
            <width>100</width>
@@ -191,7 +191,7 @@
      </widget>
     </item>
     <item row="0" column="0">
-     <widget class="QGroupBox" name="groupBox_2">
+     <widget class="QGroupBox" name="basicsLyt">
       <property name="font">
        <font>
         <stylestrategy>NoAntialias</stylestrategy>
@@ -208,7 +208,7 @@
       </property>
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="1" column="3">
-        <widget class="QLineEdit" name="mgt_value">
+        <widget class="QLineEdit" name="mgt_pm">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -277,7 +277,7 @@
         </widget>
        </item>
        <item row="1" column="2">
-        <widget class="QLineEdit" name="dem_value">
+        <widget class="QLineEdit" name="dem_pm">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -296,7 +296,7 @@
         </widget>
        </item>
        <item row="1" column="0">
-        <widget class="QLabel" name="label_3">
+        <widget class="QLabel" name="noOfPmLbl">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -340,7 +340,7 @@
         </widget>
        </item>
        <item row="1" column="1">
-        <widget class="QLineEdit" name="rtd_value">
+        <widget class="QLineEdit" name="rtd_pm">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -359,7 +359,7 @@
         </widget>
        </item>
        <item row="0" column="4">
-        <widget class="QLabel" name="label_27">
+        <widget class="QLabel" name="totPmLbl">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -384,7 +384,7 @@
         </widget>
        </item>
        <item row="1" column="4">
-        <widget class="QLineEdit" name="totalPm_value">
+        <widget class="QLineEdit" name="tot_pm">
          <property name="enabled">
           <bool>false</bool>
          </property>
@@ -415,7 +415,7 @@
         </widget>
        </item>
        <item row="0" column="6">
-        <widget class="QLabel" name="label_26">
+        <widget class="QLabel" name="pmCostLbl">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -440,7 +440,7 @@
         </widget>
        </item>
        <item row="1" column="6">
-        <widget class="QLineEdit" name="costPm_value">
+        <widget class="QLineEdit" name="pm_cost">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -475,7 +475,7 @@
      </widget>
     </item>
     <item row="1" column="0">
-     <widget class="QTabWidget" name="calLayout">
+     <widget class="QTabWidget" name="CalculatorLyt">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
         <horstretch>0</horstretch>
@@ -499,7 +499,7 @@
        </attribute>
        <layout class="QGridLayout" name="gridLayout">
         <item row="15" column="6">
-         <widget class="QLineEdit" name="subCon_total">
+         <widget class="QLineEdit" name="tot_sub_con">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -524,7 +524,7 @@
          </widget>
         </item>
         <item row="15" column="4">
-         <widget class="QLineEdit" name="subCon_oth">
+         <widget class="QLineEdit" name="sub_con_oth">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -546,7 +546,7 @@
          </widget>
         </item>
         <item row="15" column="3">
-         <widget class="QLineEdit" name="subCon_mgt">
+         <widget class="QLineEdit" name="sub_con_mgt">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -637,7 +637,7 @@
          </widget>
         </item>
         <item row="15" column="1">
-         <widget class="QLineEdit" name="subCon_rtd">
+         <widget class="QLineEdit" name="sub_con_rtd">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -781,7 +781,7 @@
          </widget>
         </item>
         <item row="15" column="2">
-         <widget class="QLineEdit" name="subCon_dem">
+         <widget class="QLineEdit" name="sub_con_dem">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -800,7 +800,7 @@
          </widget>
         </item>
         <item row="14" column="6">
-         <widget class="QLineEdit" name="persoanl_total">
+         <widget class="QLineEdit" name="tot_persoanl">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -825,7 +825,7 @@
          </widget>
         </item>
         <item row="15" column="0">
-         <widget class="QLabel" name="label_9">
+         <widget class="QLabel" name="subConLbl">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -844,7 +844,7 @@
          </widget>
         </item>
         <item row="14" column="0">
-         <widget class="QLabel" name="label_8">
+         <widget class="QLabel" name="persoanlLbl">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -870,7 +870,7 @@
          </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLineEdit" name="travel">
+         <widget class="QLineEdit" name="tot_travel_cost">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -889,7 +889,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLabel" name="label_18">
+         <widget class="QLabel" name="travelLbl">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -911,7 +911,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="QLabel" name="label_20">
+         <widget class="QLabel" name="equiplbl">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -933,7 +933,7 @@
          </widget>
         </item>
         <item row="1" column="0">
-         <widget class="QLabel" name="label_31">
+         <widget class="QLabel" name="associLbl">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -958,7 +958,7 @@
          </widget>
         </item>
         <item row="1" column="2">
-         <widget class="QLineEdit" name="equip">
+         <widget class="QLineEdit" name="tot_equip_cost">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -977,7 +977,7 @@
          </widget>
         </item>
         <item row="2" column="0">
-         <widget class="QLabel" name="label_30">
+         <widget class="QLabel" name="indirectPercLbl">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1002,7 +1002,7 @@
          </widget>
         </item>
         <item row="2" column="1">
-         <widget class="QLineEdit" name="indirect_value">
+         <widget class="QLineEdit" name="indirect_perc">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1046,7 +1046,7 @@
          </widget>
         </item>
         <item row="13" column="6">
-         <widget class="QLabel" name="label_21">
+         <widget class="QLabel" name="total1Lbl">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1071,7 +1071,7 @@
          </widget>
         </item>
         <item row="16" column="0">
-         <widget class="QLabel" name="label_10">
+         <widget class="QLabel" name="othDirectLbl">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1090,7 +1090,7 @@
          </widget>
         </item>
         <item row="16" column="4">
-         <widget class="QLineEdit" name="othDirectCost_oth">
+         <widget class="QLineEdit" name="oth_direct_oth">
           <property name="enabled">
            <bool>true</bool>
           </property>
@@ -1118,7 +1118,7 @@
          </widget>
         </item>
         <item row="16" column="6">
-         <widget class="QLineEdit" name="othDirectCost_total">
+         <widget class="QLineEdit" name="tot_oth_direct">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1143,7 +1143,7 @@
          </widget>
         </item>
         <item row="16" column="3">
-         <widget class="QLineEdit" name="othDirectCost_mgt">
+         <widget class="QLineEdit" name="oth_direct_mgt">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1168,7 +1168,7 @@
          </widget>
         </item>
         <item row="16" column="1">
-         <widget class="QLineEdit" name="othDirectCost_rtd">
+         <widget class="QLineEdit" name="oth_direct_rtd">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1193,7 +1193,7 @@
          </widget>
         </item>
         <item row="16" column="2">
-         <widget class="QLineEdit" name="othDirectCost_dem">
+         <widget class="QLineEdit" name="oth_direct_dem">
           <property name="enabled">
            <bool>true</bool>
           </property>
@@ -1218,7 +1218,7 @@
          </widget>
         </item>
         <item row="17" column="0">
-         <widget class="QLabel" name="label_11">
+         <widget class="QLabel" name="indirectLbl">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1237,7 +1237,7 @@
          </widget>
         </item>
         <item row="17" column="4">
-         <widget class="QLineEdit" name="indirectCost_oth">
+         <widget class="QLineEdit" name="indirect_oth">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1262,7 +1262,7 @@
          </widget>
         </item>
         <item row="17" column="2">
-         <widget class="QLineEdit" name="indirectCost_dem">
+         <widget class="QLineEdit" name="indirect_dem">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1287,7 +1287,7 @@
          </widget>
         </item>
         <item row="17" column="1">
-         <widget class="QLineEdit" name="indirectCost_rtd">
+         <widget class="QLineEdit" name="indirect_rtd">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1312,7 +1312,7 @@
          </widget>
         </item>
         <item row="19" column="0">
-         <widget class="QLabel" name="label_22">
+         <widget class="QLabel" name="total2Lbl">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1337,7 +1337,7 @@
          </widget>
         </item>
         <item row="17" column="3">
-         <widget class="QLineEdit" name="indirectCost_mgt">
+         <widget class="QLineEdit" name="indirect_mgt">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1362,7 +1362,7 @@
          </widget>
         </item>
         <item row="17" column="6">
-         <widget class="QLineEdit" name="indirectCost_total">
+         <widget class="QLineEdit" name="tot_indirect">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1387,7 +1387,7 @@
          </widget>
         </item>
         <item row="19" column="3">
-         <widget class="QLineEdit" name="mgt_total">
+         <widget class="QLineEdit" name="tot_mgt">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1412,7 +1412,7 @@
          </widget>
         </item>
         <item row="19" column="2">
-         <widget class="QLineEdit" name="dem_total">
+         <widget class="QLineEdit" name="tot_dem">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1437,7 +1437,7 @@
          </widget>
         </item>
         <item row="19" column="4">
-         <widget class="QLineEdit" name="oth_total">
+         <widget class="QLineEdit" name="tot_oth">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1465,7 +1465,7 @@
          </widget>
         </item>
         <item row="19" column="1">
-         <widget class="QLineEdit" name="rtd_total">
+         <widget class="QLineEdit" name="tot_rtd">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1510,40 +1510,40 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <tabstops>
-  <tabstop>rtd_value</tabstop>
-  <tabstop>dem_value</tabstop>
-  <tabstop>mgt_value</tabstop>
-  <tabstop>costPm_value</tabstop>
-  <tabstop>travel</tabstop>
-  <tabstop>equip</tabstop>
+  <tabstop>rtd_pm</tabstop>
+  <tabstop>dem_pm</tabstop>
+  <tabstop>mgt_pm</tabstop>
+  <tabstop>pm_cost</tabstop>
+  <tabstop>tot_travel_cost</tabstop>
+  <tabstop>tot_equip_cost</tabstop>
   <tabstop>persoanl_oth</tabstop>
-  <tabstop>subCon_rtd</tabstop>
-  <tabstop>subCon_dem</tabstop>
-  <tabstop>subCon_mgt</tabstop>
-  <tabstop>subCon_oth</tabstop>
-  <tabstop>othDirectCost_oth</tabstop>
-  <tabstop>clearAll</tabstop>
-  <tabstop>indirectCost_mgt</tabstop>
-  <tabstop>totalPm_value</tabstop>
-  <tabstop>othDirectCost_total</tabstop>
-  <tabstop>subCon_total</tabstop>
-  <tabstop>othDirectCost_dem</tabstop>
-  <tabstop>persoanl_total</tabstop>
+  <tabstop>sub_con_rtd</tabstop>
+  <tabstop>sub_con_dem</tabstop>
+  <tabstop>sub_con_mgt</tabstop>
+  <tabstop>sub_con_oth</tabstop>
+  <tabstop>oth_direct_oth</tabstop>
+  <tabstop>clearAllBtn</tabstop>
+  <tabstop>indirect_mgt</tabstop>
+  <tabstop>tot_pm</tabstop>
+  <tabstop>tot_oth_direct</tabstop>
+  <tabstop>tot_sub_con</tabstop>
+  <tabstop>oth_direct_dem</tabstop>
+  <tabstop>tot_persoanl</tabstop>
   <tabstop>personal_mgt</tabstop>
-  <tabstop>indirectCost_total</tabstop>
+  <tabstop>tot_indirect</tabstop>
   <tabstop>persoanl_dem</tabstop>
   <tabstop>persoanl_rtd</tabstop>
-  <tabstop>dem_total</tabstop>
-  <tabstop>othDirectCost_mgt</tabstop>
-  <tabstop>othDirectCost_rtd</tabstop>
-  <tabstop>indirectCost_rtd</tabstop>
-  <tabstop>rtd_total</tabstop>
-  <tabstop>indirectCost_dem</tabstop>
-  <tabstop>oth_total</tabstop>
-  <tabstop>indirectCost_oth</tabstop>
-  <tabstop>indirect_value</tabstop>
-  <tabstop>mgt_total</tabstop>
-  <tabstop>calLayout</tabstop>
+  <tabstop>tot_dem</tabstop>
+  <tabstop>oth_direct_mgt</tabstop>
+  <tabstop>oth_direct_rtd</tabstop>
+  <tabstop>indirect_rtd</tabstop>
+  <tabstop>tot_rtd</tabstop>
+  <tabstop>indirect_dem</tabstop>
+  <tabstop>tot_oth</tabstop>
+  <tabstop>indirect_oth</tabstop>
+  <tabstop>indirect_perc</tabstop>
+  <tabstop>tot_mgt</tabstop>
+  <tabstop>CalculatorLyt</tabstop>
  </tabstops>
  <resources/>
  <connections/>
